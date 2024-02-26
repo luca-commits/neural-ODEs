@@ -291,8 +291,11 @@ elif args.Model == 'ODEUnet':
                     )
 model = model.to(device)
 
-Unet_training_val_summary = train_model(model, device, train_dataloader, val_dataloader, accelerator=accelerator, number_of_classes=number_of_classes,
-                                        lr=3e-4, epochs=cfg.SINGLE_NETWORK_TRAINING_EPOCHS, update_pb_every_batch=10)
+total_params = sum(p.numel() for p in model.parameters())
+print(f"Number of parameters: {total_params}")
+
+# Unet_training_val_summary = train_model(model, device, train_dataloader, val_dataloader, accelerator=accelerator, number_of_classes=number_of_classes,
+#                                         lr=3e-4, epochs=cfg.SINGLE_NETWORK_TRAINING_EPOCHS, update_pb_every_batch=10)
 
 clear_output(True)
 plot_losses_coeffs(Unet_training_val_summary)
