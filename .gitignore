@@ -3,4 +3,4 @@
 **.egg-info
 **.png
 **/figs
-*/archive.zip
+/experiments/Segmentation/Cityscapes/dataset/archive.zip
